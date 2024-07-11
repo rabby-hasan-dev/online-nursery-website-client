@@ -1,3 +1,5 @@
+import Home from "../../pages/Home/Home/Home";
+import Navbar from "../../pages/shared/Navbar/Navbar";
 
 
 
@@ -6,7 +8,9 @@ const MainLayout = () => {
 
     return (
         <div>
-            <h2>Main layout</h2>
+            <Navbar></Navbar>
+            <hr />
+            <Home></Home>
         </div>
     );
 };
