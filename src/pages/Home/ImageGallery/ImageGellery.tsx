@@ -14,7 +14,7 @@ const ImageGellery = () => {
         <div>
 
             <Container>
-                <h1 className='text-4xl font-bold text-center my-[60px] '>Image Gellery</h1>
+                <h1 className='text-4xl font-bold text-center my-[60px] uppercase '>Image Gellery</h1>
                 <div className=" container mx-auto p-4">
                     <div className="grid grid-cols-3 grid-rows-3 gap-4">
                         <div className=" col-span-2 row-span-2  ">
