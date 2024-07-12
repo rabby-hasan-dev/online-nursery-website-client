@@ -10,13 +10,10 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
-        <li> <Link to='#'>Trees</Link></li>
+        <li> <Link to='/products'>Trees</Link></li>
         <li> <Link to='#'>About Us</Link></li>
         <li><Link to="#">Contact Us</Link></li>
-        <li><Link to="#">Management</Link></li>
-
-
-
+        <li><Link to="/management">Management</Link></li>
     </>
     return (
         <Container>

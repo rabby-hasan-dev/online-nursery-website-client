@@ -1,5 +1,5 @@
 
-const Sidebar = ({ navOptions }) => {
+const NavSidebar = ({ navOptions }) => {
 
     return (
 
@@ -25,4 +25,4 @@ const Sidebar = ({ navOptions }) => {
     );
 };
 
-export default Sidebar;
+export default NavSidebar;

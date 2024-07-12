@@ -1,4 +1,4 @@
-import Home from "../../pages/Home/Home/Home";
+import { Outlet } from "react-router-dom";
 import Footer from "../../pages/shared/Footer/Footer";
 import Navbar from "../../pages/shared/Navbar/Navbar";
 
@@ -11,7 +11,7 @@ const MainLayout = () => {
         <div>
             <Navbar></Navbar>
             <hr />
-            <Home></Home>
+            <Outlet></Outlet>
             <Footer></Footer>
         </div>
     );
