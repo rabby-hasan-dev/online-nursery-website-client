@@ -1,14 +1,12 @@
 import { FaCartShopping } from "react-icons/fa6";
 
 
-const Card = ({ image, title, rating, price }) => {
-
+const Card = ({ images, title, rating, price }) => {
+    console.log(images);
     return (
         <div className="card bg-base-100 w-96 shadow-xl ">
             <figure className="p-8">
-                <img
-                    src={image}
-                    alt="product" />
+                <img src={images} alt="product" />
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{title} </h2>

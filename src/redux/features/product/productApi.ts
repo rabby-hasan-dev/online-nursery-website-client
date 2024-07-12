@@ -32,12 +32,17 @@ const productApi = baseApi.injectEndpoints({
             invalidatesTags: ['product']
         }),
         deleteProudct: builder.mutation({
-            query: ({ params }) => ({
-                url: "/products",
-                method: "DELETE",
-                params: params
+            query: (params) => {
+                return {
+                    url: `/products/${params}`,
+                    method: "DELETE",
 
-            }),
+                }
+
+
+
+
+            },
             invalidatesTags: ['product']
         }),
 
@@ -46,4 +51,4 @@ const productApi = baseApi.injectEndpoints({
 
 
 
-export const { useGetProuctQuery, usePostProudctMutation } = productApi;
+export const { useGetProuctQuery, usePostProudctMutation, useDeleteProudctMutation } = productApi;

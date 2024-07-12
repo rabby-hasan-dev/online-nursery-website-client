@@ -31,6 +31,7 @@ const HeroSection = () => {
                     </div>
 
 
+
                 </div>
                 <div className="relative">
                     <img className="max-h-[600px] w-full " src={slider2} alt="img" />

@@ -2,10 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import ManagmentLayout from "../components/layout/ManagmentLayout";
 import Home from "../pages/Home/Home/Home";
-import Product from "../pages/Home/Product/Product";
 import Management from "../pages/Management/Management";
 import AddProduct from "../pages/Management/Products/AddProduct/AddProduct";
 import AllProduct from "../pages/Management/Products/Products/AllProducts";
+import ProductHub from "../pages/ProductHub/ProductHub";
 
 
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/products',
-                element: <Product></Product>
+                element: <ProductHub></ProductHub>
             }
         ]
     },
