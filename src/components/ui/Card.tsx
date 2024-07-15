@@ -1,12 +1,18 @@
 import { FaCartShopping } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 
-const Card = ({ images, title, rating, price }) => {
-    console.log(images);
+const Card = ({ id ,images, title, rating, price }) => {
+
+
     return (
-        <div className="card bg-base-100 w-96 shadow-xl ">
+      
+       
+       <div className="card bg-base-100 w-96 shadow-xl ">
             <figure className="p-8">
+         <Link to={`/products/${id}`} >
                 <img src={images} alt="product" />
+         </Link>
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{title} </h2>
@@ -19,6 +25,8 @@ const Card = ({ images, title, rating, price }) => {
                 </div>
             </div>
         </div>
+       
+       
     );
 };
 

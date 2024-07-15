@@ -6,6 +6,7 @@ import Management from "../pages/Management/Management";
 import AddProduct from "../pages/Management/Products/AddProduct/AddProduct";
 import AllProduct from "../pages/Management/Products/Products/AllProducts";
 import ProductHub from "../pages/ProductHub/ProductHub";
+import ProductDetails from "../pages/shared/ProductDetails/ProductDetails";
 
 
 
@@ -22,7 +23,15 @@ const router = createBrowserRouter([
             {
                 path: '/products',
                 element: <ProductHub></ProductHub>
-            }
+            },
+            {
+                path: '/products/:productId',
+                element: <ProductDetails></ProductDetails>
+            },
+            // {
+            //     path: '/products/:productId',
+            //     element: <ProductHub></ProductHub>
+            // }
         ]
     },
     {
