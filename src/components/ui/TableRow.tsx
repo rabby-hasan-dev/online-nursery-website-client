@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import { openModal } from "../../redux/features/ModalState/modalSlice";
 import { useDeleteProudctMutation } from "../../redux/features/product/productApi";
 import { useAppDispatch } from "../../redux/hooks";
@@ -25,8 +26,8 @@ const TableRow = ({ item }) => {
             <td>{category?.name} </td>
             <td>{price}</td>
             <th>
-                <button onClick={() => disPatch(openModal())} className="btn btn-ghost btn-xs">Update </button>
-                <button onClick={() => deleteProduct(_id)} className="btn btn-ghost btn-xs">Delete</button>
+                <Button  onClick={() => disPatch(openModal(_id))} className="btn btn-ghost btn-xs">Update </Button>
+                <Button onClick={() => deleteProduct(_id)} className="btn btn-ghost btn-xs">Delete</Button>
             </th>
         </tr>
 

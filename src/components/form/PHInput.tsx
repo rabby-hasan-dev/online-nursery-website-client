@@ -20,7 +20,7 @@ const PHInput = ({ name, type, label }: TInputProps) => {
 
 
             />
-            {/* <Input className="border" type={type} id={name}  {...register(name)} /> */}
+          
 
         </div>
     )

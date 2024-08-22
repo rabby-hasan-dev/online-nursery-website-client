@@ -1,5 +1,7 @@
+import { Form } from "antd";
 import { ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-form";
+
 
 // type TDefaultValues = { userId: string; password: string; }
 
@@ -24,13 +26,19 @@ const PHForm = ({ onSubmit, children, defaultValues }: TPropsForm) => {
     }
     const methods = useForm(formConfig)
 
+    const submit:SubmitHandler<FieldValues> =(data)=>{
+        onSubmit(data);
+        methods.reset();
+
+
+    }
 
 
     return (
         <FormProvider {...methods} >
-
-
-            <form onSubmit={methods.handleSubmit(onSubmit)}> {children} </form>
+             <Form layout="vertical" onFinish={methods.handleSubmit(submit)}> {children} </Form>
+            
+            {/* <form onSubmit={methods.handleSubmit(onSubmit)}> {children} </form> */}
         </FormProvider>
     );
 };

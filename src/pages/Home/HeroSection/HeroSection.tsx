@@ -9,13 +9,13 @@ import slider4 from '../../../assets/images/slider/slider (4).jpg';
 
 const HeroSection = () => {
 
-    const contentStyle: React.CSSProperties = {
-        height: '160px',
-        color: '#fff',
-        lineHeight: '160px',
-        textAlign: 'center',
-        background: '#364d79',
-    };
+    // const contentStyle: React.CSSProperties = {
+    //     height: '160px',
+    //     color: '#fff',
+    //     lineHeight: '160px',
+    //     textAlign: 'center',
+    //     background: '#364d79',
+    // };
 
 
     return (

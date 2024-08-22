@@ -6,8 +6,8 @@ const productApi = baseApi.injectEndpoints({
 
     endpoints: (builder) => ({
         getProuct: builder.query({
-            query: (params) =>{
-               
+            query: (params) =>{  
+                console.log(' product api inside', params);      
               return  {
                     url: "/products",
                     method: "GET",
@@ -18,6 +18,15 @@ const productApi = baseApi.injectEndpoints({
             providesTags: ['product']
 
         }),
+
+        getSingleProuct: builder.query({
+            query: (id) => ({
+                url: `/products/singleProduct/${id}`,
+                method: "GET",
+               
+            }),
+        }),
+
         postProudct: builder.mutation({
             query: (data) => ({
                 url: "/products",
@@ -55,4 +64,9 @@ const productApi = baseApi.injectEndpoints({
 
 
 
-export const { useGetProuctQuery, usePostProudctMutation, useDeleteProudctMutation } = productApi;
+export const {
+     useGetProuctQuery,
+      usePostProudctMutation,
+       useDeleteProudctMutation,
+      useGetSingleProuctQuery
+     } = productApi;
