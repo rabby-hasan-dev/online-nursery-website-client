@@ -1,17 +1,20 @@
-import Card from "../../../components/ui/Card";
+
 import Container from "../../../components/ui/Container";
 import { useGetProuctQuery } from "../../../redux/features/product/productApi";
+import ProductCard from "../../../components/ui/ProductCard";
+import { IProduct } from "../../../types/prduct.type";
+
 
 const Product = () => {
     const { data } = useGetProuctQuery(undefined);
 
     return (
         <Container>
-            <h1 className=" text-4xl font-bold uppercase my-[60px] text-center ">popular products</h1>
-            <div className="grid  lg:grid-cols-3 gap-4">
-                {data?.data.map((item) => <Card key={item._id} id={item._id} images={item.images} title={item.title} price={item.price} rating={item.rating} ></Card>)}
+            <h1 className="text-4xl font-bold uppercase my-[60px] text-center ">popular products</h1>
+            <div className="grid lg:grid-cols-3 gap-4 mx-auto">
+                {data?.data.map((item:IProduct) => <ProductCard key={item._id} id={item._id} image={item.image} title={item.title} price={item.price} rating={item.rating} ></ProductCard>)}
             </div>
-            {/* <Card></Card> */}
+
         </Container>
     );
 };

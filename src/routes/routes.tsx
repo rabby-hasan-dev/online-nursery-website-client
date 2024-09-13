@@ -8,6 +8,7 @@ import AllProduct from "../pages/Management/Products/Products/AllProducts";
 import ProductHub from "../pages/ProductHub/ProductHub";
 import ProductDetails from "../pages/shared/ProductDetails/ProductDetails";
 import Categories from "../pages/Management/Category/Categories/Categories";
+import Checkout from "../pages/CheckOut/Checkout";
 
 
 
@@ -29,10 +30,10 @@ const router = createBrowserRouter([
                 path: '/products/:productId',
                 element: <ProductDetails></ProductDetails>
             },
-            // {
-            //     path: '/products/:productId',
-            //     element: <ProductHub></ProductHub>
-            // }
+            {
+                path: '/checkout',
+                element: <Checkout></Checkout>
+            }
         ]
     },
     {

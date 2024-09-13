@@ -6,8 +6,7 @@ const productApi = baseApi.injectEndpoints({
 
     endpoints: (builder) => ({
         getProuct: builder.query({
-            query: (params) =>{  
-                console.log(' product api inside', params);      
+            query: (params) =>{       
               return  {
                     url: "/products",
                     method: "GET",

@@ -4,9 +4,13 @@ import { FaCartShopping } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import brandLogo from '../../../assets/brandLogo.png';
 import Container from "../../../components/ui/Container";
+import { useAppSelector } from "../../../redux/hooks";
+import { items } from "../../../redux/features/cart/CartSlice";
 
 
 const Navbar = () => {
+    const cartNumber=useAppSelector(items)
+
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
@@ -30,7 +34,9 @@ const Navbar = () => {
                 </div>
                 <div>
                     <div className="flex items-center ">
-                        <FaCartShopping className="size-5 mr-1" /> Cart 0
+                       <Link to='/checkout' >
+                       <FaCartShopping className="size-5 mr-1" />{cartNumber.length}
+                       </Link>
                     </div>
                 </div>
 
