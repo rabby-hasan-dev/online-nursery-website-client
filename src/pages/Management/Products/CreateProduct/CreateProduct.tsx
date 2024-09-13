@@ -29,14 +29,14 @@ const CreateProduct = () => {
     const onSubmit = async (data: any) => {
         console.log(data)
         const price = Number(data.price);
-        const stock = Number(data.stock);
+        const quantity = Number(data.quantity);
         const rating = Number(data.rating);
 
         // image uploader
         const images = await uploadImage(data?.image)
 
         try {
-            const productData = { ...data, price: price, stock: stock, rating: rating, image: images }
+            const productData = { ...data, price: price, quantity: quantity, rating: rating, image: images }
             const res = await createProduct(productData).unwrap();
             if (res.success) {
                 toast.success(res.message)
@@ -76,7 +76,7 @@ const CreateProduct = () => {
                                 <PHSelect name="category" label="Seclect Category" options={categoryOptions}></PHSelect>
                             </Col>
                             <Col span={24} xl={12} md={12} lg={8} >
-                                <PHInput name="stock" type="number" label="stock"></PHInput>
+                                <PHInput name="quantity" type="number" label="quantity"></PHInput>
                             </Col>
                             <Col span={24} xl={12} md={12} lg={8} >
                                 <PHInput name="rating" type="number" label="rating"></PHInput>

@@ -3,7 +3,7 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useGetSingleProuctQuery } from "../../../redux/features/product/productApi";
 import { useParams } from "react-router-dom";
 import Container from "../../../components/ui/Container";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
+import { useAppDispatch,  } from "../../../redux/hooks";
 import { addToCart, } from "../../../redux/features/cart/CartSlice";
 
 const ProductDetails = () => {

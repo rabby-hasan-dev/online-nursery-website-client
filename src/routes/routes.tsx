@@ -9,6 +9,8 @@ import ProductHub from "../pages/ProductHub/ProductHub";
 import ProductDetails from "../pages/shared/ProductDetails/ProductDetails";
 import Categories from "../pages/Management/Category/Categories/Categories";
 import Checkout from "../pages/CheckOut/Checkout";
+import Order from "../pages/Management/Order/Order";
+import AboutPage from "../pages/AboutPage/AboutPage";
 
 
 
@@ -33,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: '/checkout',
                 element: <Checkout></Checkout>
+            },
+            {
+                path: '/about',
+                element: <AboutPage></AboutPage>
             }
         ]
     },
@@ -53,8 +59,8 @@ const router = createBrowserRouter([
                 element: <AllProduct></AllProduct>
             },
             {
-                path: 'order',
-                element: <AddProduct></AddProduct>
+                path: 'orders',
+                element: <Order></Order>
             },
         ]
     },

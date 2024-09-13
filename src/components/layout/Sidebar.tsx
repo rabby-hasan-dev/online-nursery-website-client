@@ -23,7 +23,7 @@ const Sidebar = () => {
         },
         {
             key: "Order",
-            label: <Link to="/management/order">Order </Link>
+            label: <Link to="/management/orders">Order </Link>
         },
        
 

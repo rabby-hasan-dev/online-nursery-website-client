@@ -5,14 +5,15 @@ import { DollarCircleOutlined } from '@ant-design/icons';
 import { Button, Input, Form, message, Typography, Space} from 'antd';
 import { clearCart } from '../../redux/features/cart/CartSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { useCreateOrderMutation } from '../../redux/features/cart/orderApi';
 const { Title } = Typography;
 
 
 const OrderForm: React.FC = () => {
-  // const [createOrder] = useCreateOrderMutation();
+  const [createOrder] = useCreateOrderMutation();
   const dispatch = useAppDispatch();
   const cartData = useAppSelector((state: RootState) => state.cart.items);
-
+  
   const handleSubmit = async (values: any) => {
 
     // Check if cartData is not empty
@@ -40,6 +41,7 @@ const OrderForm: React.FC = () => {
         };
         
         // Send data for each item =====>
+        await createOrder(orderData)
       }
 
       message.success('Order created successfully');

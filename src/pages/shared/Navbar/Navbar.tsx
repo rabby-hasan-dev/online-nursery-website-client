@@ -14,9 +14,8 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
-        <li> <Link to='/products'>Trees</Link></li>
-        <li> <Link to='#'>About Us</Link></li>
-        <li><Link to="#">Contact Us</Link></li>
+        <li> <Link to='/products'>Products Hub</Link></li>
+        <li> <Link to='/about'>About Us</Link></li>
         <li><Link to="/management">Management</Link></li>
     </>
     return (
