@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 
 const Card = ({ id ,images, title, rating, price }) => {
 
+    const handleAddToCard=(data)=>{
+        console.log(data)
+    }
 
     return (
       
@@ -20,7 +23,10 @@ const Card = ({ id ,images, title, rating, price }) => {
                 <p>${price} </p>
 
                 <div className="card-actions justify-center ">
-                    <button className="btn w-full text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white"><FaCartShopping className="size-5 mr-1" /> Add To Cart</button>
+                    <button onClick={(e)=>{
+                        e.stopPropagation();
+                         handleAddToCard('data')
+                    }}  className="btn w-full text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white"><FaCartShopping className="size-5 mr-1" /> Add To Cart</button>
 
                 </div>
             </div>

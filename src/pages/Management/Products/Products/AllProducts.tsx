@@ -1,22 +1,24 @@
 import { Button } from "antd";
-import Modals from "../../../../components/Modal/Modals";
 import TableRow from "../../../../components/ui/TableRow";
 import { openModal } from "../../../../redux/features/ModalState/modalSlice";
-import { useGetProuctQuery, useGetSingleProuctQuery } from "../../../../redux/features/product/productApi";
+import { useGetProuctQuery } from "../../../../redux/features/product/productApi";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
+import { IProduct } from "../../../../types/prduct.type";
+import CreateProduct from "../CreateProduct/CreateProduct";
+import UpdateProduct from "../UpdateProduct/UpdateProduct";
+
+
 
 const AllProduct = () => {
     const disPatch = useAppDispatch();
-    const isOpen = useAppSelector((state) => state.modal.isOpen);
+    const { data: products } = useGetProuctQuery(undefined);
     const id = useAppSelector((state) => state.modal.id);
-    const { data:products } = useGetProuctQuery(undefined);
-    const { data: singleProduct } = useGetSingleProuctQuery(id ,{skip:!id});
-   
-    
 
     return (
         <div>
-            <Modals isOpen={isOpen} id={id} payload={singleProduct}  ></Modals>
+            {
+                !id ? <CreateProduct></CreateProduct> : <UpdateProduct></UpdateProduct>
+            }
             <h1 className=" text-2xl font-bold uppercase text-center ">Produdcts List</h1>
             <div className="flex justify-end">
                 <Button className="uppercase" onClick={() => disPatch(openModal(undefined))} >Create new product </Button>
@@ -37,7 +39,7 @@ const AllProduct = () => {
                         </thead>
                         <tbody>
                             {
-                                products?.data.map((item) => <TableRow key={item._id} item={item} ></TableRow>)
+                                products?.data.map((item: IProduct) => <TableRow key={item._id} item={item} ></TableRow>)
                             }
 
 

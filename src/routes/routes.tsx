@@ -3,10 +3,11 @@ import App from "../App";
 import ManagmentLayout from "../components/layout/ManagmentLayout";
 import Home from "../pages/Home/Home/Home";
 import Management from "../pages/Management/Management";
-import AddProduct from "../pages/Management/Products/AddProduct/AddProduct";
+import AddProduct from "../pages/Management/Products/CreateProduct/CreateProduct";
 import AllProduct from "../pages/Management/Products/Products/AllProducts";
 import ProductHub from "../pages/ProductHub/ProductHub";
 import ProductDetails from "../pages/shared/ProductDetails/ProductDetails";
+import Categories from "../pages/Management/Category/Categories/Categories";
 
 
 
@@ -43,12 +44,16 @@ const router = createBrowserRouter([
                 element: <Management></Management>,
             },
             {
-                path: 'order',
-                element: <AddProduct></AddProduct>
+                path: 'categories',
+                element: <Categories></Categories>
             },
             {
                 path: 'allProduct',
                 element: <AllProduct></AllProduct>
+            },
+            {
+                path: 'order',
+                element: <AddProduct></AddProduct>
             },
         ]
     },

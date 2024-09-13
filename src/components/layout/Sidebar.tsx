@@ -14,6 +14,10 @@ const Sidebar = () => {
         },
 
         {
+            key: "All Categories",
+            label: <Link to="/management/categories">All Categories</Link>
+        },
+        {
             key: "All Product",
             label: <Link to="/management/allProduct">All Product</Link>
         },

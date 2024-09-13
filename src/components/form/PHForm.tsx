@@ -18,14 +18,14 @@ type TFormCofing = {
 
 
 const PHForm = ({ onSubmit, children, defaultValues }: TPropsForm) => {
-
     const formConfig: TFormCofing = {};
 
     if (defaultValues) {
         formConfig['defaultValues'] = defaultValues;
     }
-    const methods = useForm(formConfig)
 
+    const methods = useForm(formConfig)
+    
     const submit:SubmitHandler<FieldValues> =(data)=>{
         onSubmit(data);
         methods.reset();
@@ -37,8 +37,6 @@ const PHForm = ({ onSubmit, children, defaultValues }: TPropsForm) => {
     return (
         <FormProvider {...methods} >
              <Form layout="vertical" onFinish={methods.handleSubmit(submit)}> {children} </Form>
-            
-            {/* <form onSubmit={methods.handleSubmit(onSubmit)}> {children} </form> */}
         </FormProvider>
     );
 };

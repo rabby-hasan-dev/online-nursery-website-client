@@ -4,6 +4,7 @@ import { Button } from 'antd/es/radio';
 import { Link, Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
+
 const { Header, Content } = Layout;
 
 
@@ -31,6 +32,7 @@ const ManagmentLayout = () => {
                                 height: "100%"
                             }}
                         >
+        
                             <Outlet></Outlet>
                         </div>
                     </Content>
