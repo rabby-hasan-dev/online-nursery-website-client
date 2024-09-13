@@ -10,7 +10,7 @@ const Sidebar = () => {
     const sidebarItems: any = [
         {
             key: "Managements",
-            label: <Link to="/management/management">Management</Link>
+            label: <Link to="/management">Management</Link>
         },
 
         {

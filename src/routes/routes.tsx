@@ -3,7 +3,6 @@ import App from "../App";
 import ManagmentLayout from "../components/layout/ManagmentLayout";
 import Home from "../pages/Home/Home/Home";
 import Management from "../pages/Management/Management";
-import AddProduct from "../pages/Management/Products/CreateProduct/CreateProduct";
 import AllProduct from "../pages/Management/Products/Products/AllProducts";
 import ProductHub from "../pages/ProductHub/ProductHub";
 import ProductDetails from "../pages/shared/ProductDetails/ProductDetails";
@@ -47,7 +46,7 @@ const router = createBrowserRouter([
         element: <ManagmentLayout></ManagmentLayout>,
         children: [
             {
-                path: 'management',
+                index:true,
                 element: <Management></Management>,
             },
             {
