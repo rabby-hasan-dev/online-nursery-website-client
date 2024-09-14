@@ -2,7 +2,7 @@
 import React from 'react';
 import { RootState } from '../../redux/store';
 import { DollarCircleOutlined } from '@ant-design/icons';
-import { Button, Input, Form, message, Typography, Space} from 'antd';
+import { Button, Input, Form, message, Typography, Space } from 'antd';
 import { clearCart } from '../../redux/features/cart/CartSlice';
 import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import { useCreateOrderMutation } from '../../redux/features/cart/orderApi';
@@ -13,7 +13,7 @@ const OrderForm: React.FC = () => {
   const [createOrder] = useCreateOrderMutation();
   const dispatch = useAppDispatch();
   const cartData = useAppSelector((state: RootState) => state.cart.items);
-  
+
   const handleSubmit = async (values: any) => {
 
     // Check if cartData is not empty
@@ -39,17 +39,17 @@ const OrderForm: React.FC = () => {
           productId: item.productId,
           quantity: item.quantity,
         };
-        
+
         // Send data for each item =====>
-        await createOrder(orderData)
+        const res = await createOrder(orderData).unwrap()
+        console.log(res);
       }
 
       message.success('Order created successfully');
       dispatch(clearCart())
-       
-    } catch (error) {
-      console.error('Error:', error);  // Log error
-      message.error('Error creating order');
+
+    } catch (error: any) {
+      message.error(error?.data?.message);
     }
   };
 

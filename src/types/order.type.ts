@@ -3,9 +3,16 @@ import { IProduct } from "./prduct.type";
 export interface AddToCart {
     _id: string;
     userId?: string;
-    productId: string |undefined;
+    productId: string;
     quantity: number;
 }
+
+export interface Order {
+    _id: string;
+    userId?: string;  
+    productId: string;  
+    quantity: number;
+  }
 
 export interface CreateOrderPayload {
     userId?: string;

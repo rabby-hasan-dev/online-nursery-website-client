@@ -26,14 +26,18 @@ const ProductDetails = () => {
     }
 
     const handleAddToCart = (data: string | undefined) => {
+
+        if (productItem.quantity === 0) {
+           return toast.error(" Sorry! Out Of Stock. ")
+        }
         const addCartData: ICartItem = {
             productId: data,
             name: productItem.title,
             price: Number(productItem.price),
             quantity: 1,
         }
-
         dispatch(addToCart(addCartData))
+
 
     }
 

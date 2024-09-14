@@ -52,11 +52,11 @@ const CreateCategory = () => {
                             <Col span={24} xl={12} md={12} lg={8} >
                                 <PHInput name="name" type="text" label="Name"></PHInput>
                             </Col>
-
                             <Col span={24} xl={12} md={12} lg={8}  >
                                 <Controller
                                     name="image"
-                                    render={({ field: { onChange, value, ...field } }) =>
+                                    rules={{ required: ` Picture is required`, }}
+                                    render={({ field: { onChange, value, ...field},fieldState:{error} }) =>
 
                                     (
                                         <Form.Item label="Picture"  >
@@ -65,20 +65,24 @@ const CreateCategory = () => {
                                                 onChange={(e) => onChange(e.target.files?.[0])}
                                                 value={value?.fileName}
                                             ></Input>
+                                             {error && <small style={{ color: 'red' }}>{error.message}</small>}
                                         </Form.Item>
                                     )
                                     }
 
                                 />
                             </Col>
+
+                            {/* descriptions */}
                             <Col span={24} xl={12} md={12} lg={8}  >
                                 <Controller
                                     name="description"
-                                    render={({ field }) =>
-
+                                    rules={{ required: ` description is required`, }}
+                                    render={({ field, fieldState: { error } }) =>
                                     (
                                         <Form.Item label="Description"  >
                                             <TextArea  {...field} rows={4} placeholder="Write Description" />
+                                            {error && <small style={{ color: 'red' }}>{error.message}</small>}
                                         </Form.Item>
                                     )
                                     }

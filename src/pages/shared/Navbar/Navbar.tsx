@@ -42,7 +42,7 @@ const Navbar = () => {
                     <Drawer
                         title={<img src={brandLogo} alt="barndLogo" />}
                         placement={'left'}
-                        closable={false}
+                        closable={true}
                         onClose={closeDrawer}
                         open={drawerVisible}
                         key={'left'}

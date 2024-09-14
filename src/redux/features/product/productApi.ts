@@ -32,7 +32,7 @@ const productApi = baseApi.injectEndpoints({
                 method: "POST",
                 body: data,
             }),
-            invalidatesTags: ['product']
+            invalidatesTags: ['product','categories']
         }),
         updateProudct: builder.mutation({
             query: ({ id, data }) => ({
@@ -55,7 +55,7 @@ const productApi = baseApi.injectEndpoints({
 
 
             },
-            invalidatesTags: ['product']
+            invalidatesTags: ['product','categories']
         }),
 
     })

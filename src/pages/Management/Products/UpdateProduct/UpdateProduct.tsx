@@ -10,6 +10,8 @@ import ModalProvider from "../../../../components/Modal/ModalProvider";
 import PHForm from "../../../../components/form/PHForm";
 import PHInput from "../../../../components/form/PHInput";
 import TextArea from "antd/es/input/TextArea";
+import PHSelect from "../../../../components/form/PHSelect";
+import { ICategory } from "../../../../types/category.type";
 
 
 
@@ -35,10 +37,20 @@ const UpdateProduct = () => {
     }
 
 
+    const categoryValue = singleProduct?.data?.category;
+    const categoryOptions = (item: ICategory) => {
+        return [{
+            value: item._id,
+            label: item.name,
+        }]
+
+    }
 
 
-    const onSubmit:SubmitHandler<FieldValues> = async (data) => {
-      
+
+
+    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+
         const price = Number(data.price);
         const quantity = Number(data.quantity);
         const rating = Number(data.rating);
@@ -83,14 +95,11 @@ const UpdateProduct = () => {
                                 <PHInput name="title" type="text" label="title"></PHInput>
                             </Col>
                             <Col span={24} xl={12} md={12} lg={8} >
-                                <PHInput name="brand" type="text" label="brand"></PHInput>
-                            </Col>
-                            <Col span={24} xl={12} md={12} lg={8} >
                                 <PHInput name="price" type="number" label="price"></PHInput>
                             </Col>
 
                             <Col span={24} xl={12} md={12} lg={8} >
-                                <PHInput name="category" type="text" disabled label="category"></PHInput>
+                                <PHSelect name="category" label="Category" options={categoryOptions(categoryValue)} ></PHSelect>
                             </Col>
                             <Col span={24} xl={12} md={12} lg={8} >
                                 <PHInput name="quantity" type="number" label="quantity"></PHInput>

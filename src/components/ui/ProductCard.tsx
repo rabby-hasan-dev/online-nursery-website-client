@@ -6,12 +6,16 @@ import { ICartItem } from "../../types/cart.type";
 import { IProduct } from "../../types/prduct.type";
 
 import { Rate } from "antd";
+import { toast } from "sonner";
 
 
 const ProductCard = ({ item }: { item: IProduct }) => {
     const dispatch = useAppDispatch();
-    
+
     const handleAddToCart = (data: string) => {
+        if (item.quantity === 0) {
+            return toast.error(" Sorry! Out Of Stock. ")
+        }
         const addCartData: ICartItem = {
             productId: data,
             name: item?.title,
