@@ -1,18 +1,28 @@
 
 import Container from "../../components/ui/Container";
 import { useGetProuctQuery } from "../../redux/features/product/productApi";
-import ProductCard from "../../components/ui/ProductCard";
-import { IProduct } from "../../types/prduct.type";
+import SearchFilterPagination from "../shared/SearchFilterPagination/SearchFilterPagination";
+import { useGetAllCategoriesQuery } from "../../redux/features/categories/categorieApi";
+import { Spin } from "antd";
 
 
 const ProductHub = () => {
-  const { data } = useGetProuctQuery(undefined);
+  const { data: AllProducts, isLoading: isLoadingProduct, isFetching: isFetchingPrduct } = useGetProuctQuery(undefined);
+  const { data: AllCategory, isLoading: isLoadingCategory, isFetching: isFeatchingCategory } = useGetAllCategoriesQuery(undefined);
+  const categories = AllCategory?.data || []
+  const products = AllProducts?.data || []
+
+  if (isLoadingProduct && isLoadingCategory) {
+    return <Spin></Spin>
+  }
+  if (isFetchingPrduct && isFeatchingCategory && !categories && !products) {
+    return <Spin></Spin>
+  }
+
   return (
     <Container>
-      <h1 className=" text-4xl font-bold uppercase my-[60px] text-center ">products list</h1>
-      <div className="grid grid-cols-3 gap-4">
-        {data?.data.map((item:IProduct) => <ProductCard key={item._id} id={item._id} image={item?.image} title={item.title} price={item.price} rating={item.rating} ></ProductCard>)}
-      </div>
+      <h1 className=" text-4xl font-bold uppercase mt-8 mb-5 text-center ">products list</h1>
+      <SearchFilterPagination products={products} categories={categories}></SearchFilterPagination>
 
     </Container>
   );

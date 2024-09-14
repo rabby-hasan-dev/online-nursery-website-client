@@ -12,7 +12,7 @@ const Product = () => {
         <Container>
             <h1 className="text-4xl font-bold uppercase my-[60px] text-center ">popular products</h1>
             <div className="grid lg:grid-cols-3 gap-4 mx-auto">
-                {data?.data.map((item:IProduct) => <ProductCard key={item._id} id={item._id} image={item.image} title={item.title} price={item.price} rating={item.rating} ></ProductCard>)}
+                {data?.data.map((item:IProduct) => <ProductCard key={item._id} item={item}  ></ProductCard>)}
             </div>
 
         </Container>

@@ -2,18 +2,22 @@ import { FaCartShopping } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useAppDispatch } from "../../redux/hooks";
 import { addToCart } from "../../redux/features/cart/CartSlice";
+import { ICartItem } from "../../types/cart.type";
+import { IProduct } from "../../types/prduct.type";
+
+import { Rate } from "antd";
 
 
-const ProductCard = ({ id, image, title, rating, price }) => {
+const ProductCard = ({ item }: { item: IProduct }) => {
 
     const dispatch = useAppDispatch();
 
 
-    const handleAddToCart = (data) => {
-        const addCartData = {
+    const handleAddToCart = (data: string) => {
+        const addCartData: ICartItem = {
             productId: data,
-            name: title,
-            price: Number(price),
+            name: item?.title,
+            price: Number(item?.price),
             quantity: 1,
         }
 
@@ -22,22 +26,23 @@ const ProductCard = ({ id, image, title, rating, price }) => {
 
     return (
 
-        <Link to={`/products/${id}`} className="block" >
+        <Link to={`/products/${item?._id}`} className="block" >
             <div className="card bg-base-100 w-96 shadow-xl">
                 <figure>
                     <img
-                        src={image}
+                        src={item?.image}
                         alt="card image" />
                 </figure>
                 <div className="card-body">
-                    <h2 className="card-title">{title} </h2>
-                    <p>  {rating} </p>
-                    <p>${price} </p>
+                    <h2 className="card-title">{item?.title} </h2>
+                    {/* <p> <StarOutlined/>  {item?.rating} </p> */}
+                    <Rate disabled defaultValue={item?.rating} />
+                    <p>${item?.price} </p>
                     <div className="card-actions justify-center">
                         <button onClick={(e) => {
                             e.stopPropagation();// Stop navigation on button click
                             e.preventDefault();
-                            handleAddToCart(id)
+                            handleAddToCart(item?._id)
                         }} className="btn w-full text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white"><FaCartShopping className="size-5 mr-1" /> Add To Cart</button>
                     </div>
                 </div>

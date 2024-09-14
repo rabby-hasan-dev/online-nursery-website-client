@@ -1,9 +1,10 @@
-export interface Order {
+export interface AddToCart {
     _id: string;
     userId?: string;
-    productId: string;
+    productId: string |undefined;
     quantity: number;
 }
+
 export interface CreateOrderPayload {
     userId?: string;
     productId: string;

@@ -1,20 +1,24 @@
-import { Button, Card, Image } from "antd";
+import {  Avatar, Card, Descriptions, Image } from "antd";
 import { FaCartShopping } from "react-icons/fa6";
 import { useGetSingleProuctQuery } from "../../../redux/features/product/productApi";
 import { useParams } from "react-router-dom";
 import Container from "../../../components/ui/Container";
 import { useAppDispatch,  } from "../../../redux/hooks";
 import { addToCart, } from "../../../redux/features/cart/CartSlice";
+import { StarOutlined } from "@ant-design/icons";
+import { ICartItem } from "../../../types/cart.type";
 
 const ProductDetails = () => {
     const { productId } = useParams();
+    const dispatch=useAppDispatch();
     const { data } = useGetSingleProuctQuery(productId, { skip: !productId });
     const productItem = data?.data || {};
-    const dispatch=useAppDispatch();
+    const catagoryData=productItem.category || {};
+
+    console.log(catagoryData);
     
-   
-    const handleAddToCart=(data)=>{
-      const addCartData=  {
+    const handleAddToCart=(data:string | undefined)=>{
+      const addCartData:ICartItem =  {
             productId:data,
             name: productItem.title,
             price: Number(productItem.price) ,
@@ -23,6 +27,7 @@ const ProductDetails = () => {
 
             dispatch(addToCart(addCartData))
     }
+
 
     return (
         <Container>
@@ -37,27 +42,39 @@ const ProductDetails = () => {
                 <Card className="md:w-1/2  space-y-2" >
                     <div className="space-y-4" >
                         <div className="flex justify-between items-center">
-                            <h1 className="font-bold text-2xl">{productItem.title} </h1>
-                            <p>{productItem.rating} </p>
+                            <h1 className="font-bold text-2xl">{productItem?.title} </h1>
+                            <p> <StarOutlined /> {productItem?.rating} </p>
 
                         </div>
-                        <p className="text-xl font-bold "> $ {productItem.price} </p>
-                        <p>in Stock -Redy to ship</p>
+                        <p className="text-xl font-semibold ">$ {productItem?.price} </p>
+                        <div className="flex justify-between items-center">
+                        <p>Available Stok: {productItem?.quantity} </p>
+                        <p>{productItem?.quantity === 0?"Stock Out":'in Stock -Redy to ship'} </p>
+                        </div>
                     </div>
                     <hr />
                     <div className=" space-y-4 " >
-                        <h4>SELECT QUANTITY</h4>
-                        <div className="flex  items-center space-x-4">
-                            <Button   className="font-semibold" >-</Button>
-                            <p className="font-semibold" >0</p>
-                            <Button className="font-semibold" >+</Button>
-
-                        </div>
+                        <p>{productItem.description} </p>
                         <hr />
                         <button onClick={()=>handleAddToCart(productId)} className="btn  text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white"> <FaCartShopping className="size-5 mr-1" /> Add To Cart</button>
                     </div>
                 </Card>
             </div>
+
+            {/* Category data */}
+            <Card className="shadow-lg rounded-lg mb-5">
+                <Descriptions
+                    title="Category Details"
+                    bordered
+                    layout="vertical"
+                    column={2}
+                >
+                    <Descriptions.Item label="Picture">{ <Avatar size={'large'} shape="square" src={catagoryData?.image} ></Avatar> }</Descriptions.Item>
+                    <Descriptions.Item label="Category Name">{catagoryData?.name}</Descriptions.Item>
+                    <Descriptions.Item label="Description">{catagoryData?.description}</Descriptions.Item>
+                    <Descriptions.Item label="Total Product Stock">{catagoryData?.productStock}</Descriptions.Item>
+                </Descriptions>
+            </Card>
         </Container>
     );
 };

@@ -58,13 +58,7 @@ const Navbar = () => {
 
 
                 {/* Search Bar (Hidden on mobile, visible on large screens) */}
-                <div className="hidden lg:flex justify-center items-center border hover:bg-slate-100 rounded">
-                    <Search
-                        placeholder="Search for products"
-                        size="middle"
-                        allowClear
-                    />
-                </div>
+               
 
                 {/* Brand Logo */}
                 <div className="flex flex-1 justify-center items-center">
