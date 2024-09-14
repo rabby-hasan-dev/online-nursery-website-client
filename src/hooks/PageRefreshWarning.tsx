@@ -7,11 +7,14 @@ const PageRefreshWarning = () => {
     const cartItems = useAppSelector((state: RootState) => state.cart.items);
 
     useEffect(() => {
-        const handleBeforeUnload = (event) => {
+        const handleBeforeUnload = (event: BeforeUnloadEvent) => {
             if (cartItems.length > 0) {
-                event.preventDefault();
-                event.returnValue = ''; // This triggers the browser's warning dialog
+                event.preventDefault()
+
+                return 'You have items in your cart. Are you sure you want to leave?';
             }
+
+
         };
 
         // Add event listener for page unload

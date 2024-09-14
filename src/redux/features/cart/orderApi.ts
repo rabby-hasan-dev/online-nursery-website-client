@@ -1,5 +1,4 @@
 
-import { CreateOrderPayload, Order } from "../../../types/order.type";
 import { baseApi } from "../../api/baseApi";
 
 
@@ -14,7 +13,7 @@ const orderApi = baseApi.injectEndpoints({
             }),
             providesTags: ["order"],
         }),
-        createOrder: builder.mutation<Order, CreateOrderPayload>({
+        createOrder: builder.mutation({
             query: (newOrder) => ({
                 url: "/orders",
                 method: "POST",
