@@ -1,6 +1,6 @@
 
 import { Button, Col, Form, Input, Row } from "antd";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 
 import { useAppDispatch,  } from "../../../../redux/hooks";
 import {  usePostProudctMutation } from "../../../../redux/features/product/productApi";
@@ -13,6 +13,7 @@ import PHInput from "../../../../components/form/PHInput";
 import TextArea from "antd/es/input/TextArea";
 import PHSelect from "../../../../components/form/PHSelect";
 import { useGetAllCategoriesQuery } from "../../../../redux/features/categories/categorieApi";
+import { ICategory } from "../../../../types/category.type";
 
 
 
@@ -21,13 +22,13 @@ const CreateProduct = () => {
     const [createProduct] = usePostProudctMutation();
     const  {data:categories}=useGetAllCategoriesQuery(undefined);
     
-    const categoryOptions = categories?.data?.map((item) => ({
+    const categoryOptions = categories?.data?.map((item:ICategory) => ({
         value: item._id,
         label: item.name,
       }));
 
-    const onSubmit = async (data: any) => {
-        console.log(data)
+    const onSubmit:SubmitHandler<FieldValues> = async (data) => {
+       
         const price = Number(data.price);
         const quantity = Number(data.quantity);
         const rating = Number(data.rating);

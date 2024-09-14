@@ -1,7 +1,6 @@
 
 import { Layout, theme } from 'antd';
-import { Button } from 'antd/es/radio';
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import Sidebar from './Sidebar';
 
 
@@ -20,7 +19,7 @@ const ManagmentLayout = () => {
                 <Sidebar ></Sidebar>
                 <Layout>
                     <Header style={{ padding: 0, background: colorBgContainer }} >
-                        <Link to="/" >  <Button className='ml-4' >Go Home</Button> </Link>
+                       
                     </Header>
                     <Content style={{ margin: '24px 16px 0' }}>
                         <div

@@ -3,7 +3,6 @@ import { ReactNode } from "react";
 import { FieldValues, FormProvider, SubmitHandler, useForm } from "react-hook-form";
 
 
-// type TDefaultValues = { userId: string; password: string; }
 
 type TPropsForm = {
     onSubmit: SubmitHandler<FieldValues>;

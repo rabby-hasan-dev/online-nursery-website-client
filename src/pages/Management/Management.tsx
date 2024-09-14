@@ -32,7 +32,6 @@ const Management = () => {
   return (
     <div className=" p-4 bg-gray-100 ">
       <h1 className="text-3xl font-semibold mb-6">Dashboard Overview</h1>
-
       {/* Statistics Section */}
       <Row gutter={[16, 16]}>
         <Col span={6}>

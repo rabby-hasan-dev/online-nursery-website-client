@@ -1,5 +1,6 @@
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
+import { TSidebarItems } from '../../types/global';
 
 const { Sider } = Layout;
 
@@ -7,7 +8,7 @@ const { Sider } = Layout;
 
 const Sidebar = () => {
 
-    const sidebarItems: any = [
+    const sidebarItems: TSidebarItems[] = [
         {
             key: "Managements",
             label: <Link to="/management">Management</Link>
@@ -50,7 +51,7 @@ const Sidebar = () => {
                 justifyContent: "center",
                 alignItems: "center"
             }} >
-                <h1 className='text-xl' >Online Nursery</h1>
+               <Link to='/'> <h1 className='text-xl' >Online Nursery</h1> </Link>
             </div>
             <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
         </Sider>

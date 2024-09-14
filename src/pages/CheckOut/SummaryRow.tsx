@@ -1,6 +1,6 @@
 import { Typography } from "antd";
 
-const { Title, Text } = Typography;
+const { Text } = Typography;
 
 
 interface SummaryRowProps {

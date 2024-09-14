@@ -5,7 +5,7 @@ import { useAppDispatch } from "../../redux/hooks";
 import { useDeleteCategoyMutation } from "../../redux/features/categories/categorieApi";
 
 
-const TableRow = ({ item }: { item: any }) => {
+const TableRow = ({ item }: { item:any}) => {
     const [deleteProduct] = useDeleteProudctMutation();
     const [deleteCategory] = useDeleteCategoyMutation();
     const disPatch = useAppDispatch()

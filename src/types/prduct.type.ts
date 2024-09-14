@@ -7,7 +7,7 @@ export interface IProduct {
     brand: string;
     quantity: number;
     rating: number;
-    images: string;
+    image: string;
     isDeleted: boolean;
     createdAt: string;
     updatedAt: string;

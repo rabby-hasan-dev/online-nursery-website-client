@@ -4,7 +4,7 @@ import { closeModal } from "../../../../redux/features/ModalState/modalSlice";
 import { useAppDispatch, useAppSelector, } from "../../../../redux/hooks";
 import PHForm from "../../../../components/form/PHForm";
 import PHInput from "../../../../components/form/PHInput";
-import { Controller, } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler, } from "react-hook-form";
 import { toast } from "sonner";
 import ModalProvider from "../../../../components/Modal/ModalProvider";
 import { useGetSingleCategoyQuery, useUpdateCategoyMutation } from "../../../../redux/features/categories/categorieApi";
@@ -37,8 +37,8 @@ const UpdatedCategory = () => {
 
 
 
-    const onSubmit = async (data: any) => {
-        console.log(data)
+    const onSubmit:SubmitHandler<FieldValues> = async (data) => {
+     
         // image uploader
         let images;
 

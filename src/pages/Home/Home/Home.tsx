@@ -8,6 +8,7 @@ const Home = () => {
         <div>
             <HeroSection></HeroSection>
             <ProductCategory></ProductCategory>
+          
             <Product></Product>
             <ImageGellery></ImageGellery>
         </div>

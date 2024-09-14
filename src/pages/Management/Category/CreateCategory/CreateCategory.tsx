@@ -2,7 +2,7 @@ import { Button, Col, Form, Input, Row } from "antd";
 import { closeModal } from "../../../../redux/features/ModalState/modalSlice";
 import PHForm from "../../../../components/form/PHForm";
 import PHInput from "../../../../components/form/PHInput";
-import { Controller, } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler, } from "react-hook-form";
 import { toast } from "sonner";
 import ModalProvider from "../../../../components/Modal/ModalProvider";
 import { usePostCategoyMutation } from "../../../../redux/features/categories/categorieApi";
@@ -19,7 +19,7 @@ const CreateCategory = () => {
     const disPatch = useAppDispatch();
     const [createCategory] = usePostCategoyMutation();
 
-    const onSubmit = async (data: any) => {
+    const onSubmit:SubmitHandler<FieldValues> = async (data) => {
 
         // image uploader
         const images = await uploadImage(data?.image)

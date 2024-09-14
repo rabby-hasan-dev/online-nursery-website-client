@@ -1,6 +1,6 @@
 
 import { Button, Col, Form, Input, Row, Spin } from "antd";
-import { Controller } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import { useAppDispatch, useAppSelector } from "../../../../redux/hooks";
 import { useGetSingleProuctQuery, useUpdateProudctMutation } from "../../../../redux/features/product/productApi";
 import { uploadImage } from "../../../../utils/imageUploader";
@@ -37,8 +37,8 @@ const UpdateProduct = () => {
 
 
 
-    const onSubmit = async (data: any) => {
-        console.log(data)
+    const onSubmit:SubmitHandler<FieldValues> = async (data) => {
+      
         const price = Number(data.price);
         const quantity = Number(data.quantity);
         const rating = Number(data.rating);
