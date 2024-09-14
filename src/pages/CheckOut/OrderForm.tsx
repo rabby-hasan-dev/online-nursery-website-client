@@ -82,7 +82,7 @@ const OrderForm: React.FC = () => {
           Cash on Delivery
         </Title>
       </Space>
-      <Button type="primary" htmlType="submit">Place Order</Button>
+      <Button type="default" htmlType="submit">Place Order</Button>
     </Form>
   );
 };

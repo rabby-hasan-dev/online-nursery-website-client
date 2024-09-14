@@ -1,8 +1,8 @@
 
 
-import { Card, Row, Col, Statistic, Table, Button } from 'antd';
+import { Card, Row, Col, Statistic, Table,} from 'antd';
 import { ShoppingCartOutlined, DollarOutlined, UserOutlined, ShopOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+
 
 const Management = () => {
   // Sample data for recent orders and products
@@ -17,7 +17,7 @@ const Management = () => {
   ];
 
   const orderColumns = [
-    { title: 'Order ID', dataIndex: 'orderId', key: 'orderId' },
+    { title: 'Order ID', dataIndex: 'orderId', key: 'orderId'  },
     { title: 'Customer', dataIndex: 'customer', key: 'customer' },
     { title: 'Amount', dataIndex: 'amount', key: 'amount' },
     { title: 'Status', dataIndex: 'status', key: 'status' },
@@ -30,11 +30,11 @@ const Management = () => {
   ];
 
   return (
-    <div className=" p-4 bg-gray-100 ">
+    <div className=" p-4 bg-gray-50 ">
       <h1 className="text-3xl font-semibold mb-6">Dashboard Overview</h1>
       {/* Statistics Section */}
       <Row gutter={[16, 16]}>
-        <Col span={6}>
+        <Col span={6} xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}>
           <Card className="shadow-lg">
             <Statistic
               title="Total Sales"
@@ -44,7 +44,7 @@ const Management = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={12} sm={12} md={12} lg={6} xl={6} xxl={6}>
           <Card className="shadow-lg">
             <Statistic
               title="Orders"
@@ -54,7 +54,7 @@ const Management = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={12} sm={12} md={12} lg={6} xl={6} xxl={6} >
           <Card className="shadow-lg">
             <Statistic
               title="Customers"
@@ -64,7 +64,7 @@ const Management = () => {
             />
           </Card>
         </Col>
-        <Col span={6}>
+        <Col span={6} xs={12} sm={12} md={12} lg={6} xl={6} xxl={6} >
           <Card className="shadow-lg">
             <Statistic
               title="Products"
@@ -88,14 +88,7 @@ const Management = () => {
         <Table dataSource={recentProducts} columns={productColumns} pagination={false} />
       </div>
 
-      {/* Add Product Button */}
-      <div className="mt-8 flex justify-end">
-       <Link to='/management/allProduct' >
-       <Button type="primary" className="bg-blue-500 hover:bg-blue-600">
-          Add New Product
-        </Button>
-       </Link>
-      </div>
+     
     </div>
   );
 };

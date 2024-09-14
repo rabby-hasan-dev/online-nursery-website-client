@@ -39,18 +39,19 @@ class Footer extends Component {
                                  type="text"
                                  placeholder="username@site.com"
                                  className="input input-bordered join-item" />
-                             <button className="btn btn-primary join-item">Subscribe</button>
+                             <button className="btn  text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white join-item">Subscribe</button>
                          </div>
                      </fieldset>
                  </form>
               
              </footer>
-             <footer className="footer footer-center bg-base-300 text-base-content p-4">
+             
+               </Container>
+               <footer className="footer footer-center bg-base-100 text-base-content p-4">
                  <aside>
                      <p>Copyright © ${new Date().getFullYear()} - All right reserved by Online Nursery</p>
                  </aside>
              </footer>
-               </Container>
             </div>
         );
     }

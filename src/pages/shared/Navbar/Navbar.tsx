@@ -4,11 +4,9 @@ import brandLogo from '../../../assets/brandLogo.png';
 import Container from "../../../components/ui/Container";
 import { useAppSelector } from "../../../redux/hooks";
 import { items } from "../../../redux/features/cart/CartSlice";
-import { Avatar, Badge, Input, Drawer, Button } from "antd";
+import { Avatar, Badge,  Drawer, Button } from "antd";
 import { ShoppingCartOutlined, MenuOutlined } from "@ant-design/icons";
 import { useState } from 'react';
-
-const { Search } = Input;
 
 const Navbar = () => {
     const cartNumber = useAppSelector(items);
@@ -25,7 +23,7 @@ const Navbar = () => {
     const navOptions = (
         <>
             <li><Link to="/">Home</Link></li>
-            <li> <Link to='/products'>Products Hub</Link></li>
+            <li> <Link to='/products'>Products</Link></li>
             <li> <Link to='/about'>About Us</Link></li>
             <li><Link to="/management">Management</Link></li>
         </>

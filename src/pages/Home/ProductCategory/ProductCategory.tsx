@@ -12,7 +12,7 @@ const ProductCategory = () => {
     return (
         <Container>
             <h1 className=" text-4xl font-bold uppercase my-[60px] text-center ">Top Category</h1>
-            <div className="grid  lg:grid-cols-3 gap-4">
+            <div className="grid  sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3  xxl:grid-cols-4 gap-4">
                 {category?.data.map((item:ICategory) => <CategoryCard key={item._id} item={item}></CategoryCard>)}
             </div>
         </Container>

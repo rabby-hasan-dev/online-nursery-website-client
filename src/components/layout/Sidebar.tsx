@@ -1,7 +1,7 @@
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { TSidebarItems } from '../../types/global';
-
+import brandLogo from '../../assets/brandLogo.png';
 const { Sider } = Layout;
 
 
@@ -26,7 +26,7 @@ const Sidebar = () => {
             key: "Order",
             label: <Link to="/management/orders">Order </Link>
         },
-       
+
 
 
     ]
@@ -35,6 +35,7 @@ const Sidebar = () => {
 
     return (
         <Sider
+            theme='light'
             breakpoint="lg"
             collapsedWidth="0"
             onBreakpoint={(broken) => {
@@ -45,15 +46,19 @@ const Sidebar = () => {
             }}
         >
             <div style={{
+
                 color: "white",
                 height: '4rem',
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center"
             }} >
-               <Link to='/'> <h1 className='text-xl' >Online Nursery</h1> </Link>
+                {/* <Link to='/'> <h1 className='text-xl' >Online Nursery</h1> </Link> */}
+                <Link to="/">
+                    <img src={brandLogo} alt="brandLogo" className="w-32 " />
+                </Link>
             </div>
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
+            <Menu theme="light" mode="inline" defaultSelectedKeys={['4']} items={sidebarItems} />
         </Sider>
     );
 };

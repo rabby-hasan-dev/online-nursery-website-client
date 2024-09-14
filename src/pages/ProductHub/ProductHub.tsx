@@ -7,10 +7,15 @@ import { Spin } from "antd";
 
 
 const ProductHub = () => {
-  const { data: AllProducts, isLoading: isLoadingProduct, isFetching: isFetchingPrduct } = useGetProuctQuery(undefined);
-  const { data: AllCategory, isLoading: isLoadingCategory, isFetching: isFeatchingCategory } = useGetAllCategoriesQuery(undefined);
+  const { data: AllProducts, isLoading: isLoadingProduct, isFetching: isFetchingPrduct, error: productError } = useGetProuctQuery(undefined);
+  const { data: AllCategory, isLoading: isLoadingCategory, isFetching: isFeatchingCategory, error: categoryError } = useGetAllCategoriesQuery(undefined);
   const categories = AllCategory?.data || []
   const products = AllProducts?.data || []
+
+
+  if (productError || categoryError) {
+    return <div>Error loading data. Please try again later.</div>;
+  }
 
   if (isLoadingProduct && isLoadingCategory) {
     return <Spin></Spin>

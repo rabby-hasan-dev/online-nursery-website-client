@@ -1,25 +1,44 @@
-import { Button } from "antd";
+import { Button, message, Popconfirm, PopconfirmProps } from "antd";
 import { openModal } from "../../redux/features/ModalState/modalSlice";
 import { useDeleteProudctMutation } from "../../redux/features/product/productApi";
 import { useAppDispatch } from "../../redux/hooks";
 import { useDeleteCategoyMutation } from "../../redux/features/categories/categorieApi";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 
 
-const TableRow = ({ item }: { item:any}) => {
+const TableRow = ({ item }: { item: any }) => {
     const [deleteProduct] = useDeleteProudctMutation();
     const [deleteCategory] = useDeleteCategoyMutation();
     const disPatch = useAppDispatch()
 
+
+    const ProductConfirm: PopconfirmProps['onConfirm'] = async (e) => {
+        const res = await deleteProduct(e).unwrap();
+        if (res?.success) {
+            message.success('Product Delete Successfully');
+        }
+    }
+
+    const CategoryConfirm: PopconfirmProps['onConfirm'] = async (e) => {
+        const res = await deleteCategory(e).unwrap();
+        if (res?.success) {
+            message.success('Category Delete Successfully');
+        }
+    };
+
+
+
     return (
 
         <>
+
             {
                 item?.title && <>
                     <tr>
                         <td>
                             <div className="flex items-center gap-3">
                                 <div className="avatar">
-                                    <div className="mask mask-squircle h-12 w-12">
+                                    <div className="mask h-12 w-12">
                                         <img
                                             src={item?.image}
                                             alt="product_image" />
@@ -32,8 +51,17 @@ const TableRow = ({ item }: { item:any}) => {
                         <td>{item?.category?.name} </td>
                         <td>{item?.price}</td>
                         <th>
-                            <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs">Update </Button>
-                            <Button onClick={() => deleteProduct(item?._id)} className="btn btn-ghost btn-xs">Delete</Button>
+
+                            <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs"> <EditOutlined />Update </Button>
+                            <Popconfirm
+                                title="Delete the product"
+                                description="Are you sure to delete this product?"
+                                onConfirm={() => ProductConfirm(item._id)}
+                                okText="Yes"
+                                cancelText="No"
+                            >
+                                <Button className="btn btn-ghost btn-xs"><DeleteOutlined />Delete  </Button>
+                            </Popconfirm>
                         </th>
                     </tr>
                 </>
@@ -45,7 +73,7 @@ const TableRow = ({ item }: { item:any}) => {
                     <td>
                         <div className="flex items-center gap-3">
                             <div className="avatar">
-                                <div className="mask mask-squircle h-12 w-12">
+                                <div className="mask  h-12 w-12">
                                     <img
                                         src={item?.image}
                                         alt="product_image" />
@@ -58,8 +86,16 @@ const TableRow = ({ item }: { item:any}) => {
                     <td>{item?.description} </td>
                     <td>{item?.productStock}</td>
                     <th>
-                        <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs">Update </Button>
-                        <Button onClick={() => deleteCategory(item?._id)} className="btn btn-ghost btn-xs">Delete</Button>
+                        <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs"><EditOutlined />Update  </Button>
+                        <Popconfirm
+                            title="Delete the category"
+                            description="Are you sure to delete this category?"
+                            onConfirm={() => CategoryConfirm(item._id)}
+                            okText="Yes"
+                            cancelText="No"
+                        >
+                            <Button className="btn btn-ghost btn-xs"><DeleteOutlined />Delete  </Button>
+                        </Popconfirm>
                     </th>
                 </tr>
             </>

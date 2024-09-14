@@ -9,10 +9,8 @@ import { Rate } from "antd";
 
 
 const ProductCard = ({ item }: { item: IProduct }) => {
-
     const dispatch = useAppDispatch();
-
-
+    
     const handleAddToCart = (data: string) => {
         const addCartData: ICartItem = {
             productId: data,

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Input, Select, Slider, Pagination, Button, Card, Rate, Row, Col } from 'antd';
+import { Input, Select, Slider, Pagination, Button, Card, Rate, Row, Col, Spin } from 'antd';
 import { ICategory } from '../../../types/category.type';
 import { IProduct } from '../../../types/prduct.type';
 import ProductCard from '../../../components/ui/ProductCard';
@@ -26,7 +26,7 @@ const SearchFilterPagination = ({ products, categories }: SearchFilterPagination
   };
 
   const handleCategoryChange = (value: string) => {
- 
+
     // Logic for filtering products by category
     setFilteredProducts(
       products.filter((product: IProduct) => product?.category?._id === value)
@@ -126,13 +126,12 @@ const SearchFilterPagination = ({ products, categories }: SearchFilterPagination
 
 
       {/* Product List */}
-      <Row gutter={[16, 16]} className="mt-10">
+      <div className="mt-10 grid  justify-center md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {!paginatedProducts ? <Spin></Spin> : null}
         {paginatedProducts.map((product: IProduct) => (
-          <Col key={product._id} span={8}>
-            <ProductCard key={product._id} item={product}></ProductCard>
-          </Col>
+          <ProductCard key={product._id} item={product}></ProductCard>
         ))}
-      </Row>
+      </div>
 
 
       {/* Pagination */}

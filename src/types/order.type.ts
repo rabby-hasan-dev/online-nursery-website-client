@@ -1,3 +1,5 @@
+import { IProduct } from "./prduct.type";
+
 export interface AddToCart {
     _id: string;
     userId?: string;
@@ -21,7 +23,7 @@ export interface UpdateOrderPayload {
 export interface IOrders {
     _id: string;
     userId: string;
-    productId: string;
+    productId: IProduct;
     quantity: number;
     totalPrice: number;
     isCanceled: boolean;
