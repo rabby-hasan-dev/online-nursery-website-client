@@ -41,7 +41,7 @@ const CartTable = () => {
                     min={1}
                     value={text}
                     onChange={(value) =>
-                        handleQuantityChange(record.productId, value || 1)
+                        handleQuantityChange(record.productId as string, value || 1)
                     }
                     className="w-full"
                 />
@@ -61,7 +61,7 @@ const CartTable = () => {
                 <Button
                     type="link"
                     icon={<DeleteOutlined />}
-                    onClick={() => handleRemoveItem(record.productId)}
+                    onClick={() => handleRemoveItem(record.productId as string)}
                 />
             ),
         },

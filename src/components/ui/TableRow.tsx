@@ -4,36 +4,49 @@ import { useDeleteProudctMutation } from "../../redux/features/product/productAp
 import { useAppDispatch } from "../../redux/hooks";
 import { useDeleteCategoyMutation } from "../../redux/features/categories/categorieApi";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
+import { IProduct } from "../../types/prduct.type";
+import { ICategory } from "../../types/category.type";
 
+type TableRowProps = {
+    item: IProduct | ICategory;
+}
 
-const TableRow = ({ item }: { item: any }) => {
+const TableRow = ({ item }: TableRowProps) => {
     const [deleteProduct] = useDeleteProudctMutation();
     const [deleteCategory] = useDeleteCategoyMutation();
     const disPatch = useAppDispatch()
 
 
-    const ProductConfirm: PopconfirmProps['onConfirm'] = async (e) => {
-        const res = await deleteProduct(e).unwrap();
-        if (res?.success) {
-            message.success('Product Delete Successfully');
+    const ProductConfirm: PopconfirmProps['onConfirm'] = async () => {
+        if (isProduct(item)) {
+            const res = await deleteProduct(item?._id).unwrap();
+            if (res?.success) {
+                message.success('Product Delete Successfully');
+            }
         }
+
     }
 
-    const CategoryConfirm: PopconfirmProps['onConfirm'] = async (e) => {
-        const res = await deleteCategory(e).unwrap();
-        if (res?.success) {
-            message.success('Category Delete Successfully');
+    const CategoryConfirm: PopconfirmProps['onConfirm'] = async () => {
+        if (isCategory(item)) {
+            const res = await deleteCategory(item?._id).unwrap();
+            if (res?.success) {
+                message.success('Category Delete Successfully');
+            }
         }
+
     };
 
-
+    // Type guards to differentiate between product and category
+    const isProduct = (item: IProduct | ICategory): item is IProduct => 'title' in item;
+    const isCategory = (item: IProduct | ICategory): item is ICategory => 'name' in item;
 
     return (
 
         <>
 
             {
-                item?.title && <>
+                isProduct(item) && <>
                     <tr>
                         <td>
                             <div className="flex items-center gap-3">
@@ -49,6 +62,7 @@ const TableRow = ({ item }: { item: any }) => {
                         </td>
                         <td>{item?.title}</td>
                         <td>{item?.category?.name} </td>
+                        <td>{item?.quantity} </td>
                         <td>{item?.price}</td>
                         <th>
 
@@ -56,7 +70,7 @@ const TableRow = ({ item }: { item: any }) => {
                             <Popconfirm
                                 title="Delete the product"
                                 description="Are you sure to delete this product?"
-                                onConfirm={() => ProductConfirm(item._id)}
+                                onConfirm={ProductConfirm}
                                 okText="Yes"
                                 cancelText="No"
                             >
@@ -68,7 +82,7 @@ const TableRow = ({ item }: { item: any }) => {
 
             }
 
-            {item?.name && <>
+            {isCategory(item) && <>
                 <tr>
                     <td>
                         <div className="flex items-center gap-3">
@@ -90,7 +104,7 @@ const TableRow = ({ item }: { item: any }) => {
                         <Popconfirm
                             title="Delete the category"
                             description="Are you sure to delete this category?"
-                            onConfirm={() => CategoryConfirm(item._id)}
+                            onConfirm={CategoryConfirm}
                             okText="Yes"
                             cancelText="No"
                         >

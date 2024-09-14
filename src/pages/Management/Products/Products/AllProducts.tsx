@@ -43,6 +43,7 @@ const AllProduct = () => {
                                 <th>Image </th>
                                 <th>Title </th>
                                 <th>Category</th>
+                                <th>Quantity</th>
                                 <th>Price</th>
                                 <th className="col-span-3s">Actions</th>
                             </tr>
