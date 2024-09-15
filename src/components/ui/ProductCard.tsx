@@ -32,6 +32,7 @@ const ProductCard = ({ item }: { item: IProduct }) => {
             <div className="card bg-base-100 w-96 shadow-xl">
                 <figure>
                     <img
+                    className="hover:scale-125 transition duration-500 cursor-pointer"
                         src={item?.image}
                         alt="card image" />
                 </figure>
