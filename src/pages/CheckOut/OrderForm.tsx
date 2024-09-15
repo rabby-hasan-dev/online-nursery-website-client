@@ -54,7 +54,7 @@ const OrderForm: React.FC = () => {
   };
 
   return (
-    <Form onFinish={handleSubmit} layout="vertical">
+    <Form onFinish={handleSubmit}  layout="vertical">
       <Form.Item
         name="customerName"
         label="Name"
@@ -82,7 +82,7 @@ const OrderForm: React.FC = () => {
           Cash on Delivery
         </Title>
       </Space>
-      <Button type="default" htmlType="submit">Place Order</Button>
+      <Button  shape='round' type="default" htmlType="submit">Place Order</Button>
     </Form>
   );
 };

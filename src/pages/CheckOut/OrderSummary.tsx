@@ -1,5 +1,6 @@
 import { Button, Card, Divider, Space } from "antd";
 import SummaryRow from "./SummaryRow";
+import { DeleteOutlined } from "@ant-design/icons";
 
 
 interface OrderSummaryProps {
@@ -25,10 +26,12 @@ interface OrderSummaryProps {
           </Space>
           <Button
             type="default"
+            shape="round"
             onClick={onClearCart}
             className="w-full mt-2"
             size="large"
           >
+            <DeleteOutlined />
             Clear Cart
           </Button>
         </Card>

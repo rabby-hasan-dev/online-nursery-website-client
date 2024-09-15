@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import Container from '../../../components/ui/Container';
+import { Button } from 'antd';
 
 class Footer extends Component {
     render() {
@@ -39,7 +40,7 @@ class Footer extends Component {
                                  type="text"
                                  placeholder="username@site.com"
                                  className="input input-bordered join-item" />
-                             <button className="btn  text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white join-item">Subscribe</button>
+                             <Button  className='btn join-item bg-[#FFF] '  size='large' type='default' >Subscribe</Button>
                          </div>
                      </fieldset>
                  </form>

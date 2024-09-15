@@ -31,7 +31,7 @@ const AllProduct = () => {
             <h1 className=" text-2xl font-bold uppercase text-center ">Produdcts List</h1>
             <div className="flex justify-between items-center mb-5">
                 <p className="font-bold text-lg" > Total Products: { products?.data?.length} </p>
-                <Button className="uppercase" onClick={() => disPatch(openModal(undefined))} >Create new product </Button>
+                <Button className="uppercase" shape="round" onClick={() => disPatch(openModal(undefined))} >Create new product </Button>
 
             </div>
             <div>

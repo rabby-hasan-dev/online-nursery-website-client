@@ -5,7 +5,7 @@ import { addToCart } from "../../redux/features/cart/CartSlice";
 import { ICartItem } from "../../types/cart.type";
 import { IProduct } from "../../types/prduct.type";
 
-import { Rate } from "antd";
+import { Button, Rate } from "antd";
 import { toast } from "sonner";
 
 
@@ -32,7 +32,7 @@ const ProductCard = ({ item }: { item: IProduct }) => {
             <div className="card bg-base-100 w-96 shadow-xl">
                 <figure>
                     <img
-                    className="hover:scale-125 transition duration-500 cursor-pointer max-h-64 max-w-96"
+                        className="hover:scale-125 transition duration-500 cursor-pointer max-h-64 max-w-96"
                         src={item?.image}
                         alt="card image" />
                 </figure>
@@ -41,11 +41,14 @@ const ProductCard = ({ item }: { item: IProduct }) => {
                     <Rate disabled defaultValue={item?.rating} />
                     <p>${item?.price} </p>
                     <div className="card-actions justify-center">
-                        <button onClick={(e) => {
-                            e.stopPropagation();// Stop navigation on button click
-                            e.preventDefault();
-                            handleAddToCart(item?._id)
-                        }} className="btn w-full text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white"><FaCartShopping className="size-5 mr-1" /> Add To Cart</button>
+                        <Button
+                            onClick={(e) => {
+                                e.stopPropagation();// Stop navigation on button click
+                                e.preventDefault();
+                                handleAddToCart(item?._id)
+                            }}
+
+                            size="large" shape="round" type="default"><FaCartShopping className="size-5 mr-1" /> Add To Cart</Button>
                     </div>
                 </div>
             </div>

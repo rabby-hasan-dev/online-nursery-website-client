@@ -1,4 +1,4 @@
-import { Avatar, Card, Descriptions, Image, Spin } from "antd";
+import { Avatar, Button, Card, Descriptions, Image, Spin } from "antd";
 import { FaCartShopping } from "react-icons/fa6";
 import { useGetSingleProuctQuery } from "../../../redux/features/product/productApi";
 import { useParams } from "react-router-dom";
@@ -63,14 +63,14 @@ const ProductDetails = () => {
                         <p className="text-xl font-semibold ">$ {productItem?.price} </p>
                         <div className="flex justify-between items-center">
                             <p className="font-medium" >Available Stok: {productItem?.quantity} </p>
-                            <p className={`${productItem?.quantity === 0 ?"text-red-600 font-medium" : "font-medium" }`} >{productItem?.quantity === 0 ? "Stock Out" : 'in Stock -Redy to ship'} </p>
+                            <p className={`${productItem?.quantity === 0 ? "text-red-600 font-medium" : "font-medium"}`} >{productItem?.quantity === 0 ? "Stock Out" : 'in Stock -Redy to ship'} </p>
                         </div>
                     </div>
                     <hr />
                     <div className=" space-y-4 " >
                         <p>{productItem.description} </p>
                         <hr />
-                        <button onClick={() => handleAddToCart(productId)} className="btn  text-white   bg-[#0f172a] hover:bg-[#0f172a] hover:text-white"> <FaCartShopping className="size-5 mr-1" /> Add To Cart</button>
+                        <Button onClick={() => handleAddToCart(productId)} size="large" shape="round" type="default"><FaCartShopping className="size-5 mr-1" /> Add To Cart</Button>
                     </div>
                 </Card>
             </div>
