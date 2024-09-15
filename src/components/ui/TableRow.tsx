@@ -66,7 +66,7 @@ const TableRow = ({ item }: TableRowProps) => {
                         <td>{item?.category?.name} </td>
                         <td>{item?.quantity} </td>
                         <td>{item?.price}</td>
-                        <th>
+                        <th className="flex justify-center items-center">
 
                             <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs"> <EditOutlined />Update </Button>
                             <Popconfirm
@@ -100,8 +100,8 @@ const TableRow = ({ item }: TableRowProps) => {
                     </td>
                     <td>{item?.name}</td>
                     <td>
-                        {seeMore ? item?.description : item?.description.slice(0, 80)}
-                        {item?.description.length > 80 && (
+                        {seeMore ? item?.description : item?.description.slice(0, 30)}
+                        {item?.description.length > 30 && (
                             <span
                                 className="font-lg text-blue-500 cursor-pointer"
                                 onClick={() => setSeeMore(!seeMore)}
@@ -111,8 +111,8 @@ const TableRow = ({ item }: TableRowProps) => {
                         )}
                     </td>
                     <td>{item?.productStock}</td>
-                    <th>
-                        <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs"><EditOutlined />Update  </Button>
+                    <th className="flex justify-center items-center">
+                        <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs"><EditOutlined />Update </Button>
                         <Popconfirm
                             title="Delete the category"
                             description="Are you sure to delete this category?"
@@ -120,7 +120,7 @@ const TableRow = ({ item }: TableRowProps) => {
                             okText="Yes"
                             cancelText="No"
                         >
-                            <Button className="btn btn-ghost btn-xs"><DeleteOutlined />Delete  </Button>
+                            <Button className="btn btn-ghost btn-xs"><DeleteOutlined />Delete</Button>
                         </Popconfirm>
                     </th>
                 </tr>
