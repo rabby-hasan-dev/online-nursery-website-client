@@ -32,13 +32,12 @@ const ProductCard = ({ item }: { item: IProduct }) => {
             <div className="card bg-base-100 w-96 shadow-xl">
                 <figure>
                     <img
-                    className="hover:scale-125 transition duration-500 cursor-pointer"
+                    className="hover:scale-125 transition duration-500 cursor-pointer max-h-64 max-w-96"
                         src={item?.image}
                         alt="card image" />
                 </figure>
                 <div className="card-body">
                     <h2 className="card-title">{item?.title} </h2>
-                    {/* <p> <StarOutlined/>  {item?.rating} </p> */}
                     <Rate disabled defaultValue={item?.rating} />
                     <p>${item?.price} </p>
                     <div className="card-actions justify-center">

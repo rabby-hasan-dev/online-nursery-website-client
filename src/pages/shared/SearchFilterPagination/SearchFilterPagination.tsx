@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Input, Select, Slider, Pagination,  Row, Col, Spin } from 'antd';
+import { Input, Select, Slider, Pagination, Row, Col, Spin} from 'antd';
 import { ICategory } from '../../../types/category.type';
 import { IProduct } from '../../../types/prduct.type';
 import ProductCard from '../../../components/ui/ProductCard';
@@ -33,7 +33,7 @@ const SearchFilterPagination = ({ products, categories }: SearchFilterPagination
     );
   };
 
-  const handlePriceChange = (value:number[]) => {
+  const handlePriceChange = (value: number[]) => {
     // Logic for filtering products by price range
     setFilteredProducts(
       products.filter((product: IProduct) => product.price >= value[0] && product.price <= value[1])
