@@ -8,6 +8,7 @@ import { addToCart, } from "../../../redux/features/cart/CartSlice";
 import { StarOutlined } from "@ant-design/icons";
 import { ICartItem } from "../../../types/cart.type";
 import { toast } from "sonner";
+import { useState } from "react";
 
 
 const ProductDetails = () => {
@@ -17,6 +18,7 @@ const ProductDetails = () => {
     const { data, isLoading, isFetching, error } = useGetSingleProuctQuery(productId, { skip: !productId });
     const productItem = data?.data || {};
     const catagoryData = productItem.category || {};
+    const [seeMore, setSeeMore] = useState(false);
 
     if (isLoading || isFetching) {
         return <Spin></Spin>
@@ -28,7 +30,7 @@ const ProductDetails = () => {
     const handleAddToCart = (data: string | undefined) => {
 
         if (productItem.quantity === 0) {
-           return toast.error(" Sorry! Out Of Stock. ")
+            return toast.error(" Sorry! Out Of Stock. ")
         }
         const addCartData: ICartItem = {
             productId: data,
@@ -60,8 +62,8 @@ const ProductDetails = () => {
                         </div>
                         <p className="text-xl font-semibold ">$ {productItem?.price} </p>
                         <div className="flex justify-between items-center">
-                            <p>Available Stok: {productItem?.quantity} </p>
-                            <p>{productItem?.quantity === 0 ? "Stock Out" : 'in Stock -Redy to ship'} </p>
+                            <p className="font-medium" >Available Stok: {productItem?.quantity} </p>
+                            <p className={`${productItem?.quantity === 0 ?"text-red-600 font-medium" : "font-medium" }`} >{productItem?.quantity === 0 ? "Stock Out" : 'in Stock -Redy to ship'} </p>
                         </div>
                     </div>
                     <hr />
@@ -83,7 +85,19 @@ const ProductDetails = () => {
                 >
                     <Descriptions.Item label="Picture">{<Avatar size={'large'} shape="square" src={catagoryData?.image} ></Avatar>}</Descriptions.Item>
                     <Descriptions.Item label="Category Name">{catagoryData?.name}</Descriptions.Item>
-                    <Descriptions.Item label="Description">{catagoryData?.description}</Descriptions.Item>
+                    <Descriptions.Item label="Description">
+                        {seeMore ? catagoryData?.description : catagoryData?.description.slice(0, 120)}
+                        {catagoryData?.description.length > 120 && (
+                            <span
+                                className="font-lg text-blue-500 cursor-pointer"
+                                onClick={() => setSeeMore(!seeMore)}
+                            >
+                                {seeMore ? " See Less" : " ... See More"}
+                            </span>
+                        )}
+
+
+                    </Descriptions.Item>
                     <Descriptions.Item label="Total Product Stock">{catagoryData?.productStock}</Descriptions.Item>
                 </Descriptions>
             </Card>

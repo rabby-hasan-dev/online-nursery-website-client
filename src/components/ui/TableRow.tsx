@@ -6,6 +6,7 @@ import { useDeleteCategoyMutation } from "../../redux/features/categories/catego
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { IProduct } from "../../types/prduct.type";
 import { ICategory } from "../../types/category.type";
+import { useState } from "react";
 
 type TableRowProps = {
     item: IProduct | ICategory;
@@ -15,6 +16,7 @@ const TableRow = ({ item }: TableRowProps) => {
     const [deleteProduct] = useDeleteProudctMutation();
     const [deleteCategory] = useDeleteCategoyMutation();
     const disPatch = useAppDispatch()
+    const [seeMore, setSeeMore] = useState(false);
 
 
     const ProductConfirm: PopconfirmProps['onConfirm'] = async () => {
@@ -97,7 +99,17 @@ const TableRow = ({ item }: TableRowProps) => {
                         </div>
                     </td>
                     <td>{item?.name}</td>
-                    <td>{item?.description} </td>
+                    <td>
+                        {seeMore ? item?.description : item?.description.slice(0, 80)}
+                        {item?.description.length > 80 && (
+                            <span
+                                className="font-lg text-blue-500 cursor-pointer"
+                                onClick={() => setSeeMore(!seeMore)}
+                            >
+                                {seeMore ? " See Less" : " ... See More"}
+                            </span>
+                        )}
+                    </td>
                     <td>{item?.productStock}</td>
                     <th>
                         <Button onClick={() => disPatch(openModal(item?._id))} className="btn btn-ghost btn-xs"><EditOutlined />Update  </Button>
